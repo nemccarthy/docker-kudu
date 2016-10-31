@@ -19,30 +19,30 @@ docker-compose up -d
 
 ### Starting a Kudu console
 ```bash
-docker run --rm -it --link kududocker_kudu-tserver_1:kudu_tserver -e KUDU_TSERVER=kudu_tserver kunickiaj/kudu cli status
+docker run --rm -it --link kududocker_kudu-tserver_1:kudu_tserver -e KUDU_TSERVER=kudu_tserver nemccarthy/docker-kudu cli status
 ```
 
 ## The Long Way
 
 ### Pull this Docker image
 ```bash
-docker pull kunickiaj/kudu
+docker pull nemccarthy/docker-kudu
 ```
 
 ### (Optional) Building this Docker image
 ```bash
-docker build -t kunickiaj/kudu .
+docker build -t nemccarthy/docker-kudu .
 ```
 
 ### (Optional) Create Data containers
 ```bash
-docker create --name kudu-master-data -v /data/kudu-master kunickiaj/kudu
-docker create --name kudu-tserver-data -v /data/kudu-tserver kunickiaj/kudu
+docker create --name kudu-master-data -v /data/kudu-master nemccarthy/docker-kudu
+docker create --name kudu-tserver-data -v /data/kudu-tserver nemccarthy/docker-kudu
 ```
 
 ### Starting the Kudu Master
 ```bash
-docker run -d --name kudu-master -p 8051:8051 kunickiaj/kudu master
+docker run -d --name kudu-master -p 8051:8051 nemccarthy/docker-kudu master
 ```
 
 ### Starting the Kudu TabletServer
@@ -59,7 +59,7 @@ docker logs -f kudu-tserver
 
 ### Starting a Kudu console
 ```bash
-docker run --rm -it --link kudu_tserver -e KUDU_TSERVER=kudu_tserver kunickiaj/kudu cli status
+docker run --rm -it --link kudu_tserver -e KUDU_TSERVER=kudu_tserver nemccarthy/docker-kudu cli status
 ```
 
 ### Accessing the web interfaces

@@ -1,20 +1,20 @@
 kudu-master-data:
-  image: kunickiaj/kudu
+  image: nemccarthy/docker-kudu
   volumes:
     - /var/lib/kudu/master
 kudu-tserver-data:
-  image: kunickiaj/kudu
+  image: nemccarthy/docker-kudu
   volumes:
     - /var/lib/kudu/tserver
 kudu-master:
-  image: kunickiaj/kudu
+  image: nemccarthy/docker-kudu
   ports:
     - 8051
   volumes_from:
     - kudu-master-data
   command: master
 kudu-tserver:
-  image: kunickiaj/kudu
+  image: nemccarthy/docker-kudu
   environment:
     - KUDU_MASTER=kudu-master
   ports:
